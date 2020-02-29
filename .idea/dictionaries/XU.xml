@@ -2,6 +2,7 @@
   <dictionary name="XU">
     <words>
       <w>imread</w>
+      <w>imshow</w>
       <w>lenacolor</w>
     </words>
   </dictionary>
