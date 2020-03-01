@@ -4,6 +4,7 @@
       <w>imread</w>
       <w>imshow</w>
       <w>lenacolor</w>
+      <w>tozero</w>
     </words>
   </dictionary>
 </component>
