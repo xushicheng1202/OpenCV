@@ -5,6 +5,8 @@
       <w>imread</w>
       <w>imshow</w>
       <w>lenacolor</w>
+      <w>sobelx</w>
+      <w>sobely</w>
       <w>tozero</w>
     </words>
   </dictionary>
