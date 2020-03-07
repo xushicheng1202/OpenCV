@@ -1,23 +1,19 @@
-import cv2
+import numpy as np
+import cv2 as cv
 
-# i = cv2.imread('image/lena256.bmp', cv2.IMREAD_UNCHANGED)
-# print(i[100, 100])
-# i[100, 100] = 255
-# print(i[100, 100])
+face_cascade = cv.CascadeClassifier(
+    'C:\ProgramData\Anaconda3\envs\OpenCV\Library\etc\haarcascades\haarcascade_frontalface_default.xml')
+eye_cascade = cv.CascadeClassifier('C:\ProgramData\Anaconda3\envs\OpenCV\Library\etc\haarcascades\haarcascade_eye.xml')
 
-# i = cv2.imread('image/lenacolor.png', cv2.IMREAD_UNCHANGED)
-# print(i[100, 100])
-# i[100, 100] = [255, 255, 255]
-# print(i[100, 100])
+img = cv.imread('image/lenacolor.png')
+gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 
-# i = cv2.imread('image/lenacolor.png', cv2.IMREAD_UNCHANGED)
-# print(i[100, 100])
-# i[100, 100, 2] = 255
-# print(i[100, 100])
+for (x, y, w, h) in faces:
+    cv.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
+    roi_gray = gray[y:y + h, x:x + w]
+    roi_color = img[y:y + h, x:x + w]
 
-i = cv2.imread('image/lenacolor.png', cv2.IMREAD_UNCHANGED)
-cv2.imshow('original', i)
-i[100:150, 100:150] = [255, 255, 255]
-cv2.imshow('result', i)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+cv.imshow('Face_Detect', img)
+cv.waitKey()
+cv.destroyAllWindows()
